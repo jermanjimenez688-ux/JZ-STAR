@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JZ STAR | Streetwear</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background:
+                linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.92)),
+                url("fondo.jpg") center/cover fixed no-repeat;
+            color: white;
+        }
+
+        /* BARRA SUPERIOR */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.92);
+            border-bottom: 1px solid #b30000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: white;
+        }
+
+        .logo span {
+            color: #e00000;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 15px;
+        }
+
+        /* PORTADA */
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 15vw, 110px);
+            font-weight: 900;
+            letter-spacing: 8px;
+            text-shadow: 0 0 25px rgba(255,0,0,0.45);
+        }
+
+        .hero h1 span {
+            color: #e00000;
+        }
+
+        .hero p {
+            margin-top: 10px;
+            color: #ddd;
+            font-size: 17px;
+            letter-spacing: 2px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            background: #d40000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #ff0000;
+            transform: scale(1.05);
+        }
+
+        /* SECCIONES */
+        .section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .title h2 {
+            font-size: 35px;
+            letter-spacing: 3px;
+        }
+
+        .title h2 span {
+            color: #e00000;
+        }
+
+        .title p {
+            color: #aaa;
+            margin-top: 8px;
+        }
+
+        /* PRODUCTOS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .product {
+            background: rgba(15,15,15,0.95);
+            border: 1px solid #292929;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-7px);
+            border-color: #d40000;
+            box-shadow: 0 10px 35px rgba(180,0,0,0.25);
+        }
+
+        .product img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            background: #111;
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: #ff2020;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .buy {
+            display: block;
+            text-align: center;
+            background: #d00000;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .buy:hover {
+            background: #ff0000;
+        }
+
+        /* HISTORIA */
+        .about {
+            background: rgba(10,10,10,0.9);
+            border-left: 4px solid #d00000;
+            padding: 25px;
+            border-radius: 8px;
+            line-height: 1.7;
+            color: #ddd;
+        }
+
+        /* WHATSAPP */
+        .whatsapp {
+            text-align: center;
+            padding: 70px 20px;
+            background: rgba(100,0,0,0.18);
+        }
+
+        .whatsapp h2 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .whatsapp p {
+            color: #ccc;
+            margin-bottom: 25px;
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            background: #d00000;
+            color: white;
+            text-decoration: none;
+            padding: 16px 35px;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        /* PIE */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #050505;
+            border-top: 1px solid #222;
+            color: #777;
+        }
+
+        footer strong {
+            color: #ddd;
+        }
+
+        /* BOTÓN FLOTANTE */
+        .floating-whatsapp {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #d00000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            z-index: 2000;
+        }
+
+        @media (max-width: 600px) {
+
+            .nav a {
+                display: none;
+            }
+
+            .hero {
+                min-height: 65vh;
+            }
+
+            .hero h1 {
+                letter-spacing: 4px;
+            }
+
+            .product img {
+                height: 330px;
+            }
+
+            .section {
+                padding: 45px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+        <div class="logo">
+            JZ <span>STAR</span>
+        </div>
+
+        <div>
+            <a href="#productos">Productos</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </div>
+</header>
+
+
+<!-- PORTADA -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>JZ <span>STAR</span></h1>
+
+        <p>
+            STREETWEAR • ESTILO • ACTITUD
+        </p>
+
+        <a class="hero-button" href="#productos">
+            VER COLECCIÓN
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTOS -->
+
+<section class="section" id="productos">
+
+    <div class="title">
+
+        <h2>
+            NUEVA <span>COLECCIÓN</span>
+        </h2>
+
+        <p>
+            Playeras disponibles — $250 MXN
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <!-- PRODUCTO 1 -->
+
+        <div class="product">
+
+            <img src="playera1.jpg" alt="Playera JZ STAR">
+
+            <div class="product-info">
+
+                <h3>Playera Star</h3>
+
+                <div class="price">
+                    $250 MXN
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/message/4HMGLJDQB2ICJ1?text=Hola%20JZ%20STAR,%20me%20interesa%20la%20Playera%20Star"
+                    target="_blank">
+                    COMPRAR
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 2 -->
+
+        <div class="product">
+
+            <img src="playera2.jpg" alt="Playera JZ STAR">
+
+            <div class="product-info">
+
+                <h3>Amiri Black</h3>
+
+                <div class="price">
+                    $250 MXN
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/message/4HMGLJDQB2ICJ1?text=Hola%20JZ%20STAR,%20me%20interesa%20la%20Amiri%20Black"
+                    target="_blank">
+                    COMPRAR
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 3 -->
+
+        <div class="product">
+
+            <img src="playera3.jpg" alt="Playera JZ STAR">
+
+            <div class="product-info">
+
+                <h3>Amiri Los Angeles</h3>
+
+                <div class="price">
+                    $250 MXN
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/message/4HMGLJDQB2ICJ1?text=Hola%20JZ%20STAR,%20me%20interesa%20la%20Amiri%20Los%20Angeles"
+                    target="_blank">
+                    COMPRAR
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 4 -->
+
+        <div class="product">
+
+            <img src="playera4.jpg" alt="Playera JZ STAR">
+
+            <div class="product-info">
+
+                <h3>True Religion</h3>
+
+                <div class="price">
+                    $250 MXN
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/message/4HMGLJDQB2ICJ1?text=Hola%20JZ%20STAR,%20me%20interesa%20la%20True%20Religion"
+                    target="_blank">
+                    COMPRAR
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 5 -->
+
+        <div class="product">
+
+            <img src="playera5.jpg" alt="Playera JZ STAR">
+
+            <div class="product-info">
+
+                <h3>True Religion Caballo</h3>
+
+                <div class="price">
+                    $250 MXN
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/message/4HMGLJDQB2ICJ1?text=Hola%20JZ%20STAR,%20me%20interesa%20la%20True%20Religion%20Caballo"
+                    target="_blank">
+                    COMPRAR
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 6 -->
+
+        <div class="product">
+
+            <img src="playera6.jpg" alt="Playera JZ STAR">
+
+            <div class="product-info">
+
+                <h3>Hugo Boss Azul</h3>
+
+                <div class="price">
+                    $250 MXN
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/message/4HMGLJDQB2ICJ1?text=Hola%20JZ%20STAR,%20me%20interesa%20la%20Hugo%20Boss%20Azul"
+                    target="_blank">
+                    COMPRAR
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 7 -->
+
+        <div class="product">
+
+            <img src="playera7.jpg" alt="Playera JZ STAR">
+
+            <div class="product-info">
+
+                <h3>Hugo Boss Flores</h3>
+
+                <div class="price">
+                    $250 MXN
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/message/4HMGLJDQB2ICJ1?text=Hola%20JZ%20STAR,%20me%20interesa%20la%20Hugo%20Boss%20Flores"
+                    target="_blank">
+                    COMPRAR
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTO 8 -->
+
+        <div class="product">
+
+            <img src="playera8.jpg" alt="Playera JZ STAR">
+
+            <div class="product-info">
+
+                <h3>Street Graphic</h3>
+
+                <div class="price">
+                    $250 MXN
+                </div>
+
+                <a
+                    class="buy"
+                    href="https://wa.me/message/4HMGLJDQB2ICJ1?text=Hola%20JZ%20STAR,%20me%20interesa%20la%20Street%20Graphic"
+                    target="_blank">
+                    COMPRAR
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- NOSOTROS -->
+
+<section class="section" id="nosotros">
+
+    <div class="title">
+
+        <h2>
+            SOBRE <span>JZ STAR</span>
+        </h2>
+
+    </div>
+
+    <div class="about">
+
+        <p>
+            JZ STAR nace con la idea de crear un estilo propio
+            y llevar ropa urbana a otro nivel.
+        </p>
+
+        <br>
+
+        <p>
+            Cada venta es un paso más para cumplir nuestro objetivo:
+            <strong>tener nuestro propio local.</strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACTO -->
+
+<section class="whatsapp" id="contacto">
+
+    <h2>
+        ¿TE GUSTÓ ALGUNA?
+    </h2>
+
+    <p>
+        Escríbeme por WhatsApp para consultar disponibilidad.
+    </p>
+
+    <a
+        class="whatsapp-button"
+        href="https://wa.me/message/4HMGLJDQB2ICJ1"
+        target="_blank">
+
+        📱 PEDIR POR WHATSAPP
+
+    </a>
+
+</section>
+
+
+<!-- PIE -->
+
+<footer>
+
+    <p>
+        © 2026 <strong>JZ STAR</strong>
+    </p>
+
+    <p>
+        Streetwear • Guerrero, México
+    </p>
+
+</footer>
+
+
+<!-- WHATSAPP FLOTANTE -->
+
+<a
+    class="floating-whatsapp"
+    href="https://wa.me/message/4HMGLJDQB2ICJ1"
+    target="_blank">
+
+    ☎
+
+</a>
+
+
+</body>
+</html>
